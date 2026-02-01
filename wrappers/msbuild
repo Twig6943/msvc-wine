@@ -54,8 +54,8 @@ export WindowsTargetPlatformVersion="$SDKVER"
 export UCRTContentRoot="$UniversalCRTSdkDir_10"
 # These should point to the NETFX SDK, which may or may not be located
 # in the common Windows SDK directory.
-export NETFXKitsDir="$WindowsSdkDir"
-export NETFXSDKDir="$WindowsSdkDir"
+export NETFXKitsDir="${NETFXBASE}\\"
+export NETFXSDKDir="${NETFXSDKBASE}\\"
 
 # WDK-specific properties:
 export WDKKitVersion="10"

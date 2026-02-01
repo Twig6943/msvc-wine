@@ -25,17 +25,22 @@ fi
 BASE=z:${BASE_UNIX//\//\\}
 MSVCVER=14.13.26128
 SDKVER=10.0.16299.0
+NETFXVER=4.8
+NETFXSDKVER=v10.0A
 ARCH=x86
 MSVCBASE="$BASE\\vc"
 SDKBASE="$BASE\\$SDK"
+NETFXBASE="$BASE\\kits\\NETFXSDK\\$NETFXVER"
+NETFXSDKBASE="$BASE\\sdks\\Windows\\$NETFXSDKVER"
 MSVCDIR="$MSVCBASE\\tools\\msvc\\$MSVCVER"
 SDKINCLUDE="$SDKBASE\\include\\$SDKVER"
 SDKLIB="$SDKBASE\\lib\\$SDKVER"
 BINDIR=$BASE_UNIX/vc/tools/msvc/$MSVCVER/bin/Hostx64/$ARCH
 SDKBINDIR=$BASE_UNIX/$SDK_UNIX/bin/$SDKVER/x64
 MSBUILDBINDIR=$BASE_UNIX/MSBuild/Current/Bin/amd64
-export INCLUDE="$MSVCDIR\\atlmfc\\include;$MSVCDIR\\include;$SDKINCLUDE\\shared;$SDKINCLUDE\\ucrt;$SDKINCLUDE\\um;$SDKINCLUDE\\winrt;$SDKINCLUDE\\km"
-export LIB="$MSVCDIR\\atlmfc\\lib\\$ARCH;$MSVCDIR\\lib\\$ARCH;$SDKLIB\\ucrt\\$ARCH;$SDKLIB\\um\\$ARCH;$SDKLIB\\km\\$ARCH"
+export INCLUDE="$MSVCDIR\\atlmfc\\include;$MSVCDIR\\include;$SDKINCLUDE\\shared;$SDKINCLUDE\\ucrt;$SDKINCLUDE\\um;$SDKINCLUDE\\winrt;$SDKINCLUDE\\km;$NETFXBASE\\include"
+export LIB="$MSVCDIR\\atlmfc\\lib\\$ARCH;$MSVCDIR\\lib\\$ARCH;$SDKLIB\\ucrt\\$ARCH;$SDKLIB\\um\\$ARCH;$SDKLIB\\km\\$ARCH;$NETFXBASE\\lib"
+
 export LIBPATH="$LIB"
 # "$MSVCDIR\\bin\\Hostx64\\x64" is included in PATH for DLLs.
 export WINEPATH="${BINDIR//\//\\};${SDKBINDIR//\//\\};$MSVCDIR\\bin\\Hostx64\\x64"
